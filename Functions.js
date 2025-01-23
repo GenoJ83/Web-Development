@@ -1,7 +1,8 @@
-function name(){
-    console.timeLog;
-}
+let personName = 'Geno';
 
-const greet =(name)=>{
-    return `Hello, ${name}`
-}
+const greet = (name) => {
+    return `Hello, ${name}`;
+};
+
+// Example Usage
+console.log(greet(personName));
