@@ -1,2 +1,2 @@
-import{welcome} from "./Greetings";
+const {welcome} = require("./Greetings");
 
