@@ -1,1 +1,2 @@
-import {welcome} from "./Greetings";
+import{welcome} from "./Greetings";
+
