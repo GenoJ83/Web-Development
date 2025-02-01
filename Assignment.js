@@ -1,4 +1,4 @@
-// Import required modules
+// Importing modules
 const fs = require('fs');
 const readline = require('readline');
 const crypto = require('crypto');
@@ -6,7 +6,7 @@ const crypto = require('crypto');
 // File to store user data
 const USER_DATA_FILE = 'users.json';
 
-// Initialize readline interface
+// Initializing readline interface
 const rl = readline.createInterface({
   input: process.stdin,
   output: process.stdout
