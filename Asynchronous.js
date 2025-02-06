@@ -1,7 +1,7 @@
 //Asynchronous Prograamming
 console.log('Put the water to boil');
 console.log('Water is boiling');
-sertTimeout(()=> {
+setTimeout(()=> {
 
     console.log('Boiling water is poured into the cup');
 }, 5000)
