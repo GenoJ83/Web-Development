@@ -1,2 +1,2 @@
 //Asynchronous Prograamming
-console.log('Put the water to boil')
+console.log('Put the water to boil');
