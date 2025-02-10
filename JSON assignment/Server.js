@@ -2,12 +2,12 @@ const fs = require('fs');
 const fsPromises = require('fs').promises;
 const path = require('path');
 const express = require('express');
+const axios = require('axios'); // For self-fetching
 const app = express();
 
 const PORT = 3000;
 const jsonFilePath = path.join(__dirname, 'sample1.json');
 
-// Callback-based fetch
 app.get('/data/callback', (req, res) => {
   fs.readFile(jsonFilePath, 'utf8', (err, data) => {
     if (err) {
@@ -25,7 +25,6 @@ app.get('/data/callback', (req, res) => {
   });
 });
 
-// Promise-based fetch
 app.get('/data/promise', (req, res) => {
   fsPromises.readFile(jsonFilePath, 'utf8')
     .then(data => {
@@ -39,7 +38,6 @@ app.get('/data/promise', (req, res) => {
     });
 });
 
-// Async/Await-based fetch
 app.get('/data/async', async (req, res) => {
   try {
     const data = await fsPromises.readFile(jsonFilePath, 'utf8');
@@ -52,7 +50,20 @@ app.get('/data/async', async (req, res) => {
   }
 });
 
-// Start the server
-app.listen(PORT, () => {
+app.listen(PORT, async () => {
   console.log(`Server is running on http://localhost:${PORT}`);
+
+  // Automatically call endpoints to print output
+  try {
+    const callbackResponse = await axios.get(`http://localhost:${PORT}/data/callback`);
+    console.log('Fetched (Callback):', callbackResponse.data);
+
+    const promiseResponse = await axios.get(`http://localhost:${PORT}/data/promise`);
+    console.log('Fetched (Promise):', promiseResponse.data);
+
+    const asyncResponse = await axios.get(`http://localhost:${PORT}/data/async`);
+    console.log('Fetched (Async/Await):', asyncResponse.data);
+  } catch (error) {
+    console.error('Error fetching endpoints:', error.message);
+  }
 });
