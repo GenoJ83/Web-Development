@@ -1,5 +1,5 @@
 const fs = require('fs');
-const path = require('path');
+const path = require('sample1.json');
 
 function fetchDataCallback(filePath, callback) {
   fs.readFile(filePath, 'utf8', (err, data) => {
