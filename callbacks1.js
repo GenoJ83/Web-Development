@@ -1,23 +1,28 @@
-function fetchDataCallback(url, callback) {
-    const xhr = new XMLHttpRequest();
-    xhr.open('GET', url);
-    xhr.onload = () => {
-      if (xhr.status === 200) {
-        callback(null, JSON.parse(xhr.responseText));
-      } else {
-        callback(`Error: ${xhr.status}`, null);
-      }
-    };
-    xhr.onerror = () => callback('Network Error', null);
-    xhr.send();
-  }
-  
-  // Usage
-  fetchDataCallback('https://jsonplaceholder.typicode.com/posts', (err, data) => {
+const fs = require('fs');
+const path = require('path');
+
+function fetchDataCallback(filePath, callback) {
+  fs.readFile(filePath, 'utf8', (err, data) => {
     if (err) {
-      console.error(err);
+      callback(`Error reading file: ${err}`, null);
     } else {
-      console.log('Callback Data:', data.slice(0, 3));
+      try {
+        const jsonData = JSON.parse(data);
+        callback(null, jsonData);
+      } catch (parseErr) {
+        callback(`Error parsing JSON: ${parseErr}`, null);
+      }
     }
   });
-  
+}
+
+// Usage
+const jsonFilePath = path.join(__dirname, 'data.json');
+
+fetchDataCallback(jsonFilePath, (err, data) => {
+  if (err) {
+    console.error(err);
+  } else {
+    console.log('Callback Data from JSON file:', data);
+  }
+});
