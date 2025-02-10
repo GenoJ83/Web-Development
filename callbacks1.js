@@ -1,5 +1,5 @@
 const fs = require('fs');
-const path = require('sample1.json');
+const path = 'sample1.json';
 
 function fetchDataCallback(filePath, callback) {
   fs.readFile(filePath, 'utf8', (err, data) => {
@@ -17,12 +17,12 @@ function fetchDataCallback(filePath, callback) {
 }
 
 // Usage
-const jsonFilePath = path.join(__dirname, 'data.json');
+const jsonFilePath = 'sample1.json';
 
 fetchDataCallback(jsonFilePath, (err, data) => {
   if (err) {
     console.error(err);
   } else {
-    console.log('Callback Data from JSON file:', data);
+    console.log('Callback Data from JSON file:', data.fear);
   }
 });
