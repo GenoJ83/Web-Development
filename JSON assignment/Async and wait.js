@@ -12,4 +12,4 @@ async function fetchDataAsync(filePath) {
 }
 
 // Usage
-fetchDataAsync(path.join(__dirname, 'data.json'));
+fetchDataAsync('sample1.json');
