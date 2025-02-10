@@ -10,7 +10,7 @@ function fetchDataPromise(filePath) {
 }
 
 // Usage
-const jsonFilePath = path.join(__dirname, 'data.json');
+const jsonFilePath =  'sample1.json'
 
 fetchDataPromise(jsonFilePath)
   .then(data => console.log('Promise Data from JSON file:', data))
