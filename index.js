@@ -4,7 +4,8 @@ const app = express();
 const port = 8080;
 
 function requestLogger(requestz, response, next){
-    console,log(``)
+    console,log(`Request Method: ${request.method}), URL:${request.url}`);
+    next();
 }
 app.get('/', (req,res)=>{
     res.send('Hello World!');
