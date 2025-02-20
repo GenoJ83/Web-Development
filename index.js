@@ -7,7 +7,7 @@ function requestLogger(requestz, response, next){
     console,log(`Request Method: ${request.method}), URL:${request.url}`);
     next();
 }
-app.use(requestLogger); //
+app.use(requestLogger); //we then apply the middleware to all routes
 app.get('/', (req,res)=>{
     res.send('Hello World!');
 })
