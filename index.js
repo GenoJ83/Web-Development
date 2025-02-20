@@ -7,6 +7,7 @@ function requestLogger(requestz, response, next){
     console,log(`Request Method: ${request.method}), URL:${request.url}`);
     next();
 }
+app.use(requestLogger); //
 app.get('/', (req,res)=>{
     res.send('Hello World!');
 })
