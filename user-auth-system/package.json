@@ -8,5 +8,10 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": ""
+  "description": "",
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "fs": "^0.0.1-security",
+    "readline-sync": "^1.4.10"
+  }
 }
