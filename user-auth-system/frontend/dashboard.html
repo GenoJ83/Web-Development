@@ -1,74 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
     <link rel="stylesheet" href="styles.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
+
 <body>
-    <div class="dashboard">
-        <aside class="sidebar">
-            <h2>Dashboard</h2>
-            <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Profile</a></li>
-                <li><a href="#">Settings</a></li>
-                <li><a href="#" onclick="logout()">Logout</a></li>
-            </ul>
-            <button id="darkModeToggle">Dark Mode</button>
-        </aside>
-        <main class="main-content">
-            <div class="profile-card">
-                <img src="avatar.png" alt="User Avatar" class="avatar">
-                <h2 id="userName"></h2>
-                <p id="userEmail"></p>
-            </div>
-            <div class="stats">
-                <canvas id="userChart"></canvas>
-            </div>
-            <div class="activity">
-                <h3>Recent Activity</h3>
-                <ul id="activityList">
-                    <li>Logged in at 9:00 AM</li>
-                    <li>Viewed Profile</li>
-                    <li>Updated Settings</li>
-                </ul>
-            </div>
-        </main>
+    <div class="container">
+        <h2>Welcome, <span id="userName"></span></h2>
+        <p>Email: <span id="userEmail"></span></p>
+        <button onclick="logout()">Logout</button>
     </div>
 
     <script>
+        // Check if the user data is available in localStorage
         const user = JSON.parse(localStorage.getItem("user"));
+        
+        // If user data is not found, redirect to the login page (index.html)
         if (!user) {
             window.location.href = "index.html";
         } else {
+            // Populate the dashboard with user's information
             document.getElementById("userName").textContent = user.name;
             document.getElementById("userEmail").textContent = user.email;
         }
 
+        // Logout function to remove user data and redirect to the login page
         function logout() {
             localStorage.removeItem("user");
             window.location.href = "index.html";
         }
-
-        document.getElementById("darkModeToggle").addEventListener("click", function() {
-            document.body.classList.toggle("dark-mode");
-        });
-
-        const ctx = document.getElementById('userChart').getContext('2d');
-        new Chart(ctx, {
-            type: 'bar',
-            data: {
-                labels: ['Login', 'Profile Views', 'Settings Changes'],
-                datasets: [{
-                    label: 'User Activity',
-                    data: [5, 10, 3],
-                    backgroundColor: ['blue', 'green', 'orange']
-                }]
-            }
-        });
     </script>
 </body>
+
 </html>
