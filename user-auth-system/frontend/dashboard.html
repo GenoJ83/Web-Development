@@ -1,13 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
     <link rel="stylesheet" href="styles.css">
 </head>
-
 <body>
     <div class="container">
         <h2>Welcome, <span id="userName"></span></h2>
@@ -16,24 +14,18 @@
     </div>
 
     <script>
-        // Check if the user data is available in localStorage
         const user = JSON.parse(localStorage.getItem("user"));
-        
-        // If user data is not found, redirect to the login page (index.html)
         if (!user) {
             window.location.href = "index.html";
         } else {
-            // Populate the dashboard with user's information
             document.getElementById("userName").textContent = user.name;
             document.getElementById("userEmail").textContent = user.email;
         }
 
-        // Logout function to remove user data and redirect to the login page
         function logout() {
             localStorage.removeItem("user");
             window.location.href = "index.html";
         }
     </script>
 </body>
-
 </html>
