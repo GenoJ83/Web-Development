@@ -10,4 +10,4 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use("/api", authRoutes);
 
-app.listen(PORT, () => console.log(`Server running on http://localhost:${PORT}`));
+app.listen(PORT, () => console.log(`The server running on http://localhost:${PORT}`));
