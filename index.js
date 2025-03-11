@@ -10,7 +10,7 @@ function requestLogger(request, response, next){
 app.use(requestLogger); // Apply the middleware to all routes
 
 app.get('/', (req, res) => {
-    res.send('Hello World!');
+    res.send('Hello User!');
 });
 
 app.listen(port, () => {
