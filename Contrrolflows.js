@@ -6,7 +6,7 @@ const rl = readline.createInterface({
     output: process.stdout
 });
 
-// Ask the user for input using switch case
+// Asking the user for input using switch case
 rl.question("Enter a day of the week (1 for Monday, 7 for Sunday): ", (Day) => {
     Day = parseInt(Day); // Convert input to an integer
 
