@@ -1,4 +1,4 @@
-//Initialize function
+//Initializing the function
 function greet(name) {
     return `Hello, ${name}`;
 }
